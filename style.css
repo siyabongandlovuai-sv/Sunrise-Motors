@@ -1,0 +1,210 @@
+:root{
+  --brand:#ff9f1c; /* accent */
+  --dark:#0b1220;
+  --muted:#6b7280;
+  --bg:#f7f7fb;
+  --max-width:1100px;
+  --radius:10px;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--dark);line-height:1.45}
+.container{width:94%;max-width:var(--max-width);margin:0 auto}
+.header-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
+.site-header{background:#fff;box-shadow:0 1px 6px rgba(11,18,32,.06);position:sticky;top:0;z-index:50}
+.logo img{display:block}
+.main-nav a{margin-left:18px;text-decoration:none;color:var(--dark)}
+.main-nav a.active{font-weight:700}
+.nav-toggle{display:none;background:none;border:0;font-size:20px}
+
+.hero{background:linear-gradient(90deg, rgba(255,159,28,.12), rgba(0,0,0,0));padding:48px 0;margin-bottom:18px}
+.hero h1{font-size:clamp(26px,4vw,40px);margin:0 0 10px}
+.hero p{margin:0 0 12px;color:var(--muted)}
+.btn{display:inline-block;padding:10px 16px;border-radius:8px;background:var(--brand);color:#fff;text-decoration:none}
+.btn-alt{background:transparent;border:2px solid var(--brand);color:var(--brand)}
+.btn.small{padding:6px 10px;font-size:14px}
+
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:16px 0}
+.features article{background:#fff;padding:16px;border-radius:10px;box-shadow:0 1px 4px rgba(11,18,32,.04)}
+
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.card{background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 6px 18px rgba(11,18,32,.06)}
+.card img{width:100%;height:170px;object-fit:cover}
+.card .card-body{padding:12px}
+.card .price{font-weight:700;color:var(--brand)}
+.card.small img{height:200px}
+
+.inventory-grid{margin-top:12px}
+.filters{display:flex;gap:12px;flex-wrap:wrap;padding:12px 0}
+.filters label{display:flex;align-items:center;gap:8px}
+
+.site-footer{background:#fff;padding:18px 0;margin-top:30px;border-top:1px solid rgba(11,18,32,.04)}
+.footer-inner{display:flex;justify-content:space-between;align-items:center}
+.muted{color:var(--muted)}
+
+/* Responsive */
+@media(max-width:900px){
+  .main-nav{display:none}
+  .nav-toggle{display:block}
+}
+/* Contact Page Layout */
+.contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 12px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 6px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+.company-info p {
+    margin: 8px 0;
+}
+
+.map-container {
+    margin-top: 10px;
+}
+
+/* Mobile */
+@media (max-width: 900px) {
+    .contact-wrapper {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Fade-in animation for the entire section */
+.features.container {
+    opacity: 0;
+    animation: fadeIn 1.2s ease forwards;
+}
+
+/* Feature card container */
+.features {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 30px;
+    flex-wrap: wrap;
+    text-align: center;
+    margin-top: 30px;
+}
+
+/* Feature cards */
+.feature-item {
+    background: #ffffff;
+    padding: 30px;
+    width: 280px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    cursor: pointer;
+
+    /* slight slide-up entrance animation */
+    opacity: 0;
+    animation: slideUp 0.9s ease forwards;
+}
+
+/* Delay the animation so each one enters staggered */
+.feature-item:nth-child(1) { animation-delay: 0.2s; }
+.feature-item:nth-child(2) { animation-delay: 0.4s; }
+.feature-item:nth-child(3) { animation-delay: 0.6s; }
+
+/* Hover effect – scale + glow */
+.features-container:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+
+/* Inner text animations */
+.feature-item h3 {
+    margin-bottom: 10px;
+    font-size: 1.4rem;
+    font-weight: 700;
+    transition: color 0.3s ease;
+}
+
+.feature-item p {
+    line-height: 1.5;
+    color: #666;
+    transition: color 0.3s ease;
+}
+
+.feature-item:hover h3 {
+    color: #0077ff; /* highlight color */
+}
+
+.feature-item:hover p {
+    color: #333;
+}
+
+/* Fade-in keyframes */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Slide-up entrance effect */
+@keyframes slideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Make feature cards perspective ready */
+.features {
+    perspective: 1000px; /* needed for 3D tilt effect */
+}
+
+/* 3D Tilt + Glow */
+.feature-item {
+    background: #ffffff;
+    padding: 30px;
+    width: 280px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+    will-change: transform;
+
+    /* Neon glow effect on hover */
+    position: relative;
+}
+
+.feature-item::before {
+    content: '';
+    position: absolute;
+    top: -5px; left: -5px; right: -5px; bottom: -5px;
+    border-radius: 16px;
+    background: linear-gradient(45deg, #00f, #0ff, #ff0, #f0f);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
+
+.feature-item:hover::before {
+    opacity: 0.3;
+}
+
+/* Scale slightly on hover */
+.feature-item:hover {
+    transform: scale(1.05) rotateX(0deg) rotateY(0deg);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
